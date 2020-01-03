@@ -27,6 +27,7 @@ public class SimonSays extends KeyAdapter {
 	private int tries = 0;
 	private boolean simonSays = false;
 	private int score = 0;
+	private int points = 0;
 	Date timeAtStart;
 	JFrame j = new JFrame();
 	// Complete steps 1 - 7 before you test
@@ -39,6 +40,7 @@ public class SimonSays extends KeyAdapter {
 		images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
 		images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
 		images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
+		JOptionPane.showMessageDialog(null, "Press the matching key when Simon says otherwise press a different key");
 		// 3. Use a JOptionPane to tell the user the rules: "Press the matching
 		// key when
 		// 'Simon says' otherwise press a different key"
@@ -50,9 +52,39 @@ public class SimonSays extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-		if(e.equals(KeyEvent.VK_DOWN)) {
-			System.out.println(e);
+		//System.out.println(e.getKeyCode());
+		//System.out.println(imageIndex);
+		if(e.getKeyCode() == imageIndex) {
+			if ((simonSays == true)) {
+				score += 1;
+			}
+			
+			else {
+				tries += 1;
+			}
+			if (tries == 5) {
+				
+			}
+			else {
+				System.out.println("Score: "+score);
+				System.out.println(tries+" tries");
+				showImage();
+			}
+			j.dispose();
 		}
+		else {
+			if(simonSays == false) {
+				score += 1;
+			}
+			else {
+				tries+=1;
+			}
+		}
+		
+		//38 up
+		//39 right
+		//37 left
+		//40 down
 		// 16. If the keyCode matches the imageIndex and "Simon says"
 
 		// 17. Increase the value of score
