@@ -53,10 +53,18 @@ public class Jeopardy implements ActionListener {
 		//JPanel p = new JPanel();
 		JPanel h =createHeader(null);
 		quizPanel.add(h);
-		JButton firstButton = createButton("$100");
+		firstButton = createButton("$100");
+//		firstButton.setText("$100");
 		quizPanel.add(firstButton);
-		JButton secondButton = createButton("$200");
+		secondButton = createButton("$200");
+//		secondButton.setText("$200");
 		quizPanel.add(secondButton);
+		thirdButton = createButton("$400");
+//		thirdButton.setText("$400");
+		quizPanel.add(thirdButton);
+		fourthButton = createButton("$600");
+//		fourthButton.setText("$600");
+		quizPanel.add(fourthButton);
 		firstButton.addActionListener(this);
 		//firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
@@ -108,6 +116,7 @@ public class Jeopardy implements ActionListener {
 		// Create a new JButton
 		JButton b = new JButton();
 		b.setText(dollarAmount);
+		System.out.println(b.getText());
 		buttonCount += 1;
 		// Set the text of the button to the dollarAmount
 		
@@ -119,15 +128,17 @@ public class Jeopardy implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+		System.out.println("click");
 		// Remove this temporary message after testing:
 		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
 
 		JButton buttonPressed = (JButton) e.getSource();
-		System.out.println(buttonPressed.getText().equals(firstButton.getText()));
+		System.out.println(buttonPressed.getText());
+		System.out.println(firstButton);
+		System.out.println(buttonPressed==firstButton);
 		// If the buttonPressed was the firstButton
-		if (buttonPressed.equals(firstButton)) {
-			askQuestion("What is 2 + 2?","2",100);
+		if (buttonPressed== firstButton) {
+			askQuestion("What is 2 + 2?","4",100);
 		}
 		else if ((buttonPressed.equals(secondButton))){
 			askQuestion("What is the regional capital of the Chelevinsk region of the Russian Federation?", "Chelevinsk", 200);
